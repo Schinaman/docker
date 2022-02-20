@@ -1,0 +1,12 @@
+FROM python:3
+
+#atualiza todos repo do pacote
+RUN apt-get update -y && \
+apt-get install -y python3-pip python-dev
+WORKDIR /app
+RUN pip install Flask
+RUN pip install requests
+RUN pip install flask_mysqldb
+COPY . .
+EXPOSE 5000
+CMD ["python", "./app.py"]
